@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <p>請選擇學院</p>
+        <select id='college-list' onchange="collegeChange()">
+        </select>
+        <p>請選擇科系</p>
+        <select id='dept-list'>
+
+        </select>
+
+        <script>
+            var college = ["商學院","工學院","建設學院"];
+
+            var collegeEle = document.getElementById('college-list');
+
+            var options = "";
+            for(var i=0;i<college.length;i++){
+                options = options + '<option value="'+i+'">'+college[i]+'</option>';
+            }
+            collegeEle.innerHTML = options;
+
+            var business = ["會計系","..."];
+            var engineer = ["工業工程係","..."];
+            var build = ["建築系","..."];
+
+            var departmentEle = document.getElementById('dept-list');
+            var options = ""
+            for(var i=0;i<business.length;i++){
+                options = options + '<option value="'+i+'">'+business[i]+'</option>';
+            }
+            departmentEle.innerHTML = options;
+
+            function collegeChange() {
+                var selIndex = collegeEle[collegeEle.selectedIndex].value;
+                switch (selIndex) {
+                    case "0":
+                        kexi(selIndex,business);
+                        break;
+                    case "1":
+                        kexi(selIndex,engineer);
+                        break;
+                    case "2":
+                        kexi(selIndex,build);
+                        break;
+                    default:
+
+                }
+            }
+
+            function kexi(selIndex, dept){
+                var departmentEle = document.getElementById('dept-list');
+                var options = ""
+                for(var i=0;i<dept.length;i++){
+                    options = options + '<option value="'+i+'">'+dept[i]+'</option>';
+                }
+                departmentEle.innerHTML = options;
+            }
+        </script>
+    </body>
+</html>
